@@ -13,4 +13,6 @@ public class HelloController {
     public User hello(){
         return new User("贾睿吉","18","你好，我是贾睿吉");
     }
+
+    @PostMapping("/")
 }
