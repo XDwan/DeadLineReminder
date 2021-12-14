@@ -1,0 +1,30 @@
+<Calendar id="Calendar" bindselect="select"></Calendar>
+<view class="line"></view>
+<view class="date-title">{{today}}</view>
+
+<!--正在进行的-->
+<view >
+    <block wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="taskKey" wx:for-index="taskIdx" wx:for-item="taskItem">
+            <view data-key="{{taskItem.taskKey}}" bindtap="selectTask" class="task-block " >
+
+                    <view class="{{taskItem.importantMapValue===0?'task-mimportant':'task-important'}}"></view>
+                    <view class="time">{{taskItem.startTime}} {{taskItem.endTime}}</view>
+                    <view class="title">
+                        <view >
+                            {{taskItem.title}}
+                        </view>
+                        
+                     </view>
+                     
+                    <!-- <view class="title">{{taskItem.importantMapValue}}</view> -->
+            </view>
+            <view class="block-line"></view>
+        </block>
+
+    </block>
+</view>
+
+<button class="addButton" size="mini" bindtap="showBocklogMask" data-method="add">
+    <image  src="../../images/add.png"></image>
+</button>

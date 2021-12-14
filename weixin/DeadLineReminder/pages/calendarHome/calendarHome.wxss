@@ -1,0 +1,115 @@
+/* pages/calendarHome/calendarHome.wxss */
+/* 日历与日程之间 */
+.line{
+
+    width:100%;
+    height:20rpx;
+    background:rgb(230, 228, 228);
+}
+.date-title {
+  line-height: 70rpx;
+  font-size: 35rpx;
+  text-align: left;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+/* 添加按钮 */
+.addButton {
+    padding: 0;
+    position: fixed;
+    bottom: 100rpx;
+    left: 85%;
+    border-radius: 50%;
+    width: 80rpx !important;
+    height: 80rpx;
+    background-color: rgb(49, 120, 228);
+    box-shadow: #03A9F4 0rpx 0rpx 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 点击后的添加按钮 */
+  .addButton:active {
+    background-color: rgb(132, 207, 241);
+  }
+  /* 按钮图片 */
+  .addButton>image {
+    align-content: center;
+    width: 60rpx;
+    height: 60rpx;
+  }
+
+  .task-block{
+    width:100%;
+    height: 100rpx;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    /* justify-content: space-between; */
+    padding:0 10rpx;
+  }
+
+  .task-block .task-group{
+    border:10rpx solid #ddd;
+    margin:10rpx 0rpx;
+    box-shadow: 2rpx 2rpx #f0f0f0;
+    /*padding:0px 5px;*/
+  }
+  .hidden
+ {
+  overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+  .task-block .task-important{
+    width:20rpx;
+    height:20rpx;
+    background-color: #ff2e62;
+    display: flex;
+    align-items:center;
+    padding:5rpx 5rpx;
+    margin: 0 30rpx;
+  }
+  .task-block .task-mimportant{
+    width:20rpx;
+    height:20rpx;
+    background-color: #03A9F4;
+    display: flex;
+    align-items:center;
+    padding:5rpx 5rpx;
+    margin: 0 30rpx;
+  }
+
+
+  .task-block .time{
+    height: 15rpx;
+    width: 19rpx;
+    display: flex;
+    flex-direction :column;
+    justify-content :center;
+    margin: 0 10rpx;
+  }
+  .task-block .title{
+    height: 40rpx;
+    width: 300rpx;
+    display: flex;
+    flex-direction :column;
+    justify-content :center;
+    margin: 0 100rpx;
+  }
+  .block-line{
+    width:100%;
+    height:1rpx;
+    flex-direction :row-reverse;
+    justify-content :flex-end;
+    background: #f5f2f2;
+  }
+  .task-block .border-b{
+    border-bottom:1px solid #ddd;
+  }
+  .task-block .important{
+    color:#afb0b4
+  }
+  
+  
