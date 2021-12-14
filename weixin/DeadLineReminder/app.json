@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/calendarHome/calendarHome",
+    "pages/calendarWeek/calendarWeek",
+    "pages/create/create",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/test"
+    "Components/week/week"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,7 +13,25 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/calendarHome/calendarHome",
+        "text": "月"
+      },
+      {
+        "pagePath": "pages/calendarWeek/calendarWeek",
+        "text": "周"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的"
+      }
+    ]
+  },
   "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap.json"
 }

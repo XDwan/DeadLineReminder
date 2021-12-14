@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "Week": "../../Components/week/week"
+  }
+}
