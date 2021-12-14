@@ -36,7 +36,7 @@
 				<text>开始</text>
 				<picker mode="time" value="{{startTime}}" start="{{startTimeBeginLimit}}" end="23:59" bindchange="onChangeStartTime">
 				    <view class="picker">
-				      {{date}} {{startTime}}
+				      {{startDay}} {{startTime}}
 				    </view>
 				</picker>
 			</view>
@@ -44,7 +44,7 @@
 				<text>结束</text>
 				<picker mode="time" value="{{endTime}}" start="{{endTimeBeginLimit}}" end="23:59" bindchange="onChangeEndTime">
 				    <view class="picker">
-				      {{date}} {{endTime}}
+				      {{endDay}} {{endTime}}
 				    </view>
 				</picker>
 			</view>

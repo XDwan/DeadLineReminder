@@ -1,0 +1,34 @@
+
+<!--pages/calendarday/calendarday.wxml-->
+<!--pages/calendarday/calendarday.wxml-->
+<view class="page">
+ 
+ <Week id="Week" bindselect="select" bindmyevent="onMyEvent" bindgetHeader="getHeader"></Week>
+
+ <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px" >
+   <view class='day-content'>
+   <view class='day-hour-bar'>
+     <view class='day-hour-bar-item' wx:for="{{hour_titles}}" wx:key="index">
+       <view id="hour-bar-{{index}}" class='item' bindtap='handleTap' style='height:calc(50rpx + {{bar_item_sizes[index].height}} * 50rpx);line-height:calc(50rpx + {{bar_item_sizes[index].height}} * 50rpx)'>
+         <block  wx:if="{{item === '00:00'}}">
+           <text>  </text>
+         </block>
+         <block wx:else>
+           <text>{{item}}</text>
+         </block>
+       </view>
+       <view  wx:if="{{index != 0}}" class="day-hour-context-item-div"></view>
+     </view>
+   </view>
+
+   <view class="day-content-item"  >
+     <view class="day-content-item-sub" wx:for="{{list}}" wx:key="taskKey">
+       <view class="day-content-show" style="margin-top:{{item.StartTimeMin}}rpx; height: calc({{item.EndTimeMin}}rpx - {{item.StartTimeMin}}rpx)">
+        <text class="day-content-item-tex">{{item.title}}</text> 
+       </view>
+     </view>
+   </view>
+
+ </view>
+</scroll-view>
+</view>
