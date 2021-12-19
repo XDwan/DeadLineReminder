@@ -8,43 +8,52 @@
     <!-- 主体 -->
     <view class="create_body">
 		<view class="block border-t border-b">
+			<image src="/images/lights.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 122rpx" mode="heightFix"></image>
 			<view class="title block_line">
                 <text>标题:</text>
 				<input placeholder="最多15个字" type="text" bindinput="onChangeTitle" maxlength="15" value="{{title}}"/>
 			</view>
+			<image src="/images/text.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 225rpx" mode="heightFix"></image>
             <view class="title block_line">内容：</view>
             <view class="title block_line">
-				<textarea placeholder="最多200个字"
-                          auto-height
+				<textarea placeholder="最多40个字"
                           bindinput="onChangeContent" 
-                          maxlength="200"
+                          maxlength="40"
+						  style="height:60px;overflow:auto"
                           value="{{content}}"/>
 			</view>
             <view class="block_line border-t">
+				<image src="/images/warning.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 453rpx" mode="heightFix"></image>
 				<text>优先级:</text>
 				<picker mode="selector" range="{{taskImportant}}" bindchange="onChangeImportant">
 					<view class="picker">{{important}}</view>
 				</picker>
 			</view>
 		</view>
+
         <view class="block border-t border-b">
+			<image src="/images/clock.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 613rpx" mode="heightFix"></image>
+			<view class="end  block_line ">
+				<text>日期</text>
+				<view bindtap="setShow">共选择{{startDays.length}}天</view>	
+			</view>
 			<view class="all-day  block_line border-b">
 				<text>全天</text>
 				<switch bindchange="onChangeAllDay"></switch>
 			</view>
 			<view class="start  block_line border-b">
 				<text>开始</text>
-				<picker mode="time" value="{{startTime}}" start="{{startTimeBeginLimit}}" end="23:59" bindchange="onChangeStartTime">
+				<picker mode="selector" value="{{startTime}}" range="{{startList}}"  bindchange="onChangeStartTime">
 				    <view class="picker">
-				      {{startDay}} {{startTime}}
+				      {{startTime}}
 				    </view>
 				</picker>
 			</view>
 			<view class="end  block_line ">
 				<text>结束</text>
-				<picker mode="time" value="{{endTime}}" start="{{endTimeBeginLimit}}" end="23:59" bindchange="onChangeEndTime">
+				<picker mode="selector" value="{{endTime}}" range="{{endList}}"  bindchange="onChangeEndTime">
 				    <view class="picker">
-				      {{endDay}} {{endTime}}
+				      {{endTime}}
 				    </view>
 				</picker>
 			</view>
@@ -55,3 +64,9 @@
 	</view>
 
 </view>
+
+
+	<mp-dialog ext-class="dialog" show="{{isShow}}" bindbuttontap="tapDialogButton"  buttons="{{buttons}}">					
+		<CalendarSelect id="CalendarSelect" bindselect="select" >			
+		</CalendarSelect>
+	</mp-dialog>

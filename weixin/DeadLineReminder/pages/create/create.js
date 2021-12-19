@@ -1,26 +1,43 @@
-// pages/create/create.js
+/**
+ * 1.向服务器发送的数据：
+ * 日程标识 taskKey，创建时的秒数，num
+ * 标题 title string
+ * 内容 content string
+ * 优先级 importantMapValue num
+ * 日期 startDays  数组，多个数据
+ * 是否全天 isAllday Boolean
+ * 开始时间 startTime string
+ * 结束时间 endTime string
+ * 2.本地缓存，以日期为存储key
+ */
 var utils = require('../../utils/util');
 Page({
   /** 页面的初始数据*/
   data: {
-    title: null,
-    content: null,
-    date: new Date(),
-    importantMapValue: 0,
-    addBtnStatus: "inActive",
-    taskImportant: ['一般', '重要'],
-    important: '一般',
-    startTime: utils.formatTimeHM(new Date()),
-    startDay: utils.formatDate(new Date()),
-    endTime: utils.formatEndTimeHM(new Date()),
-    endDay: utils.formatDate(new Date()),
-    isAllday: false,
-    taskKey: Date.parse(new Date()),
-    createData: {},
-    list: new Array(),
-    StartTimeMin: utils.formatTimeMIN(new Date()),
-    EndTimeMin: utils.formatEndTimeMin(new Date()),
-  },
+    startList:["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
+      endList:["01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"],
+      title:null,
+      content : null,
+      date:new Date(), 
+      importantMapValue:0,
+      addBtnStatus:"inActive",
+      taskImportant : ['一般','重要'],
+      important : '一般',
+      startTime:utils.formatTimeH(new Date()),
+      endTime:utils.formatEndTimeH(new Date()),
+      isAllday:false,
+      taskKey:Date.parse(new Date()),
+      createData:{},
+      list:new Array(),
+      startDays:new Array(),
+      StartTimeMin:utils.formatTimeMIN(new Date()),
+      EndTimeMin:utils.formatEndTimeMin(new Date()),
+      show:false,
+      selectList:[],
+      text: '',
+      isShow:false,
+      buttons: [{text: '取消'}, {text: '确定'}],
+      },
 
   onLoad: function (options) {
     console.log(options.today),
@@ -54,10 +71,9 @@ Page({
       title: this.data.title,
       content: this.data.content || "",
       importantMapValue: this.data.importantMapValue,
-      startDay: this.data.startDay,
+      startDays:this.data.startDays,
       startTime: this.data.startTime,
       StartTimeMin: this.data.StartTimeMin,
-      endDay: this.data.endDay,
       endTime: this.data.endTime,
       EndTimeMin: this.data.EndTimeMin,
       isAllday: this.data.isAllday,
@@ -68,19 +84,24 @@ Page({
     })
     console.log(createData);
 
-    let list = wx.getStorageSync(createData.startDay) || [];
-    list.push(createData);
-    wx.setStorage({
-      key: createData.startDay,
-      data: list,
-      success: function () {
-        console.log('写入value1成功')
-        console.log(list)
-      },
-      fail: function () {
-        console.log('写入value1发生错误')
-      }
-    }),
+    for(var i=0;i<this.data.startDays.length;i++)
+        {
+          var startDay=createData.startDays[i];
+          console.log(startDay);
+          let list = wx.getStorageSync(startDay) || [];
+      list.push(createData);
+          wx.setStorage({
+          key:startDay,
+          data:list,
+          success: function() {
+            console.log('写入value1成功')
+            console.log(list)
+          },
+          fail: function() {
+            console.log('写入value1发生错误')      
+          } 
+        })
+        };
 
       wx.navigateBack({
         delta: 1
@@ -122,24 +143,38 @@ Page({
       important: this.mapImportant(importantMapValue)
     });
   },
+  //日期选择的打开和关闭
+  setShow:function(){
+    this.setData({
+      isShow:true
+    });
+    console.log(this.data.isShow);
+  },
+  setClose:function(){
+    this.setData({
+      isShow:false
+    });
+    console.log(this.data.isShow);
+  },
+
   //日程开始时间
   onChangeStartTime: function (e) {
     var hour = e.detail.value.slice(0, 2);
     var min = e.detail.value.slice(3);
-    console.log(parseFloat(min));
     this.setData({
-      startTime: e.detail.value,
-      endTime: e.detail.value > this.data.endTime ? e.detail.value : this.data.endTime,
-      StartTimeMin: parseFloat(hour) * 60 + parseFloat(min),
+      startTime: e.detail.value+":00",
+          endTime: e.detail.value > this.data.endTime ? e.detail.value : this.data.endTime,
+          StartTimeMin:parseFloat(hour)*60,
     })
   },
   //日程结束时间
   onChangeEndTime: function (e) {
     var hour = e.detail.value.slice(0, 2);
+    var temp=parseFloat(hour)+1;
     var min = e.detail.value.slice(3);
     this.setData({
-      endTime: e.detail.value,
-      EndTimeMin: parseFloat(hour) * 60 + parseFloat(min),
+      endTime: temp.toString()+":00",
+          EndTimeMin:parseFloat(hour)*60,
     })
   },
   //是否为全天
@@ -159,4 +194,48 @@ Page({
       })
     }
   },
+  //选择多个日期
+  select:function(e)
+      {
+          
+          let selectList=this.data.selectList||[];
+                if(selectList.indexOf(e.detail)===-1)
+                {
+                  selectList.push(e.detail);
+                }else{
+                    this.remove(selectList,e.detail);
+                }
+                
+                console.log(selectList);
+          this.setData({
+            selectVal:e.detail,
+            today:e.detail,
+            selectList:selectList
+        })
+       
+      },
+       // 点击删除选中的日期
+  remove: function(array, val) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] == val) {
+        array.splice(i, 1);
+      }
+    }
+    return -1;
+  },
+  //选择日期的确定
+set:function(list,){
+this.setData({
+  startDays:list,
+})
+},
+  tapDialogButton:function(e)
+    {
+      var that = this;
+      let list=this.data.selectList;        
+        this.set(list);
+        this.setClose();
+        console.log(this.data.startDays);
+        console.log(this.data.isShow);
+      },
 })
