@@ -1,2 +1,4 @@
-package com.example.deadline.service.impl;public class UserService {
+package com.example.deadline.service;
+
+public interface UserService {
 }
