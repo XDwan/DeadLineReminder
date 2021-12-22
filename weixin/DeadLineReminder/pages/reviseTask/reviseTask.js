@@ -1,5 +1,11 @@
-const { select } = require('../../lib/underscore');
-const { min } = require('../../lib/underscore');
+/**
+ * 修改页面
+ * 修改后的页面数据存放在createData中
+ * 修改函数reviseTask
+ * 
+ * 存放数据同create页面
+ * 其他数据都可以变，但时间戳taskKey不变
+*/
 var utils = require('../../utils/util');
 Page({
     /** 页面的初始数据*/
@@ -84,8 +90,8 @@ Page({
       }
       return list;
     },
-    //添加按钮，未完成
-    saveTask:function(e){
+    //修改按钮，未完成
+    reviseTask:function(e){
       let createData = {
         title: this.data.title,
         content: this.data.content||"",
@@ -101,7 +107,7 @@ Page({
       this.setData({
           createData: createData
       })
-      //console.log(createData);
+      console.log(createData);
       //let arr = wx.getStorageSync("test1") || [];
       
       console.log(this.data.startDays);

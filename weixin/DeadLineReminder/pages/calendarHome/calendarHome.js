@@ -1,6 +1,12 @@
-//const { select } = require("underscore");
+/**
+ * 删除日程
+ * createData
+ * 
+ * 除了taskKey均为null
+ * taskKey保存有时间戳
+ */
 
-// pages/calendarHome/calendarHome.js
+
 Page({
 
     /**
@@ -14,7 +20,8 @@ Page({
             { text: '查看', value: 1 },
             { text: '删除', value: 2 },
         ],
-        key:0
+        key:0,
+        createData:{},
     },
     onLoad: function(options) {
         this.Calendar = this.selectComponent("#Calendar"); //这里是实例化
@@ -112,7 +119,8 @@ Page({
                 startDays=list[i].startDays;
                 break;
               }
-            }        
+            } 
+            this.createDeleteTask(this.data.key);       
             for(var i=0;i<startDays.length;i++)
             {
               var startDay=startDays[i];
@@ -131,6 +139,23 @@ Page({
               } 
             })
             };
-
         },
+        createDeleteTask:function(e){
+          let createData = {
+            title: null,
+            content:  null,
+            importantMapValue:  null,
+            startDays: null,
+            startTime:  null,
+            StartTimeMin:  null,
+            endTime:  null,
+            EndTimeMin:  null,
+            isAllday: null,
+            taskKey: e
+          }
+          console.log(createData);
+          this.setData({
+            createData: createData
+          })
+        }
 })
