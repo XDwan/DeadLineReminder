@@ -1,0 +1,85 @@
+
+
+/*顶栏  */
+.create .header{
+    
+    position:fixed;
+	top:0rpx;
+	display:flex;
+	width:100%;
+	justify-content: space-between;
+	height:88rpx;
+	box-shadow:0rpx 0rpx 0rpx #aaa;
+}
+.create .header-btn{
+    
+	height:88rpx;
+	line-height:100rpx;
+}
+.create .header-center{
+    
+	font-size:40rpx;
+	font-weight: bolder;
+}
+.create .header-left{
+    font-size:35rpx;
+    font-weight: bolder;
+	padding-left:20rpx;
+	color:#ff688b;
+}
+.create .header-right{
+	font-size:35rpx;
+	font-weight: bolder;
+	padding-right:20rpx;
+	color:#50a7e7;
+}
+.create .header-right.inActive{
+	color:#f0f0f0;
+}
+
+.create .create_body{
+	margin-top:100rpx;
+	font-size:40rpx;
+	/*padding-top:1px;*/
+}
+.create .create_body .block{
+	margin-top:60rpx;
+	background-color:white;
+}
+.create .create_body .block_line{
+	display:flex;
+	background-color:white;
+	margin-left:50px; 
+	padding:10rpx 0rpx;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 80rpx;
+	padding-right: 20rpx;
+	border: 0.5rpx solid rgb(240, 239, 239);
+	border-left-width:0rpx;
+	border-right-width:0rpx;
+
+}
+.create .delete-btn{
+	width: 95%;
+	text-align: center;
+	margin:auto;
+	height:70rpx;
+	line-height:70rpx;
+	background-color:#ff688b;
+	margin-top:50rpx;
+	color:white;
+	border-radius: 8rpx
+
+}
+.drawer_box { 
+	width: 650rpx;  
+	overflow: hidden;  
+	position: fixed;  
+	top: 50%;  
+	left: 0;  
+	z-index: 1001;  
+	background: #FAFAFA;  
+	margin: -150px 50rpx 0 50rpx;  
+	border-radius: 3px;  
+  } 

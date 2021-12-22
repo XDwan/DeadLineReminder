@@ -1,6 +1,3 @@
-
-<!--pages/calendarday/calendarday.wxml-->
-<!--pages/calendarday/calendarday.wxml-->
 <view class="page">
  
  <Week id="Week" bindselect="select" bindmyevent="onMyEvent" bindgetHeader="getHeader"></Week>
@@ -22,9 +19,9 @@
    </view>
 
    <view class="day-content-item"  >
-     <view class="day-content-item-sub" wx:for="{{list}}" wx:key="taskKey">
-       <view class="day-content-show" style="margin-top:{{item.StartTimeMin}}rpx; height: calc({{item.EndTimeMin}}rpx - {{item.StartTimeMin}}rpx)">
-        <text class="day-content-item-tex">{{item.title}}</text> 
+     <view class="day-content-item-sub" wx:for="{{list}}" wx:key="taskKey" wx:for-index="taskIdx" wx:for-item="taskItem">
+       <view class="day-content-show" style="margin-top:{{taskItem.StartTimeMin}}rpx; height: calc({{taskItem.EndTimeMin}}rpx - {{taskItem.StartTimeMin}}rpx) " bindtap="selectTask"  data-key="{{taskItem.taskKey}}">
+        <text class="day-content-item-tex">{{taskItem.title}}</text> 
        </view>
      </view>
    </view>
@@ -32,3 +29,8 @@
  </view>
 </scroll-view>
 </view>
+<button class="addButton" size="mini" bindtap="showBocklogMask" data-method="add">
+    <image  src="../../images/add.png" style="width: 60rpx; height: 58rpx; display: block; position: absolute; box-sizing: border-box; left: 10rpx; top: 10rpx"></image>
+</button>
+<mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="- 请选择操作 -">
+</mp-actionSheet>

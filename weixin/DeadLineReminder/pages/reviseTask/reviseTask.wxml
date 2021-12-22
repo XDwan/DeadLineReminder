@@ -2,8 +2,8 @@
     <!-- 表头 -->
 	<view class="header  border-t border-b ">
 		<view class="header-left header-btn" bindtap="cancelTask">取消</view>
-		<view class="header-center header-btn">新建任务</view>
-		<view class="header-right header-btn {{addBtnStatus}}" bindtap="saveTask" >添加</view>
+		<view class="header-center header-btn">修改任务</view>
+		<view class="header-right header-btn " bindtap="reviseTask" >修改</view>
 	</view>
     <!-- 主体 -->
     <view class="create_body">
