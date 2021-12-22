@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class UserController {
-    @Autowired
-    private User user;
+//    @Autowired
+//    private User user;
 
 }

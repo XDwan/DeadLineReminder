@@ -1,0 +1,4 @@
+<!--pages/testlogin/testlogin.wxml-->
+
+
+<button bindtap="login">登录</button>

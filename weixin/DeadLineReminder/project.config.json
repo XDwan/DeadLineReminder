@@ -1,50 +1,12 @@
 {
-<<<<<<< HEAD
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": [
-      {
-        "type": "file",
-        "value": ".eslintrc.js"
-      }
-    ]
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-=======
     "description": "项目配置文件",
     "packOptions": {
         "ignore": [
             {
-                "type": "file",
-                "value": ".eslintrc.js"
+                "value": ".eslintrc.js",
+                "type": "file"
             }
         ]
->>>>>>> e2405622a9ebf3ff7435ee62f3ab081f70ecb54b
     },
     "setting": {
         "urlCheck": false,
@@ -79,42 +41,57 @@
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true,
-        "disableUseStrict": false,
-        "showES6CompileOption": false,
-        "useCompilerPlugins": false,
-        "minifyWXML": true
+        "showES6CompileOption": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.2",
     "appid": "wx8af258cf8ae80fbd",
-    "projectname": "DeadLineReminder",
+    "projectname": "miniprogram-3",
+    "cloudfunctionTemplateRoot": "",
+    "watchOptions": {
+        "ignore": []
+    },
     "debugOptions": {
         "hidedInDevtools": []
     },
     "scripts": {},
-    "staticServerOptions": {
-        "baseURL": "",
-        "servePath": ""
-    },
-    "isGameTourist": false,
     "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
+        "plugin": {
             "list": []
         },
         "game": {
-            "list": []
-        },
-        "plugin": {
             "list": []
         },
         "gamePlugin": {
             "list": []
         },
         "miniprogram": {
-            "list": []
+            "list": [
+                {
+                    "name": "pages/index/index",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/calendarWeek/calendarWeek",
+                    "pathName": "pages/calendarWeek/calendarWeek",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/calendarHome/calendarHome",
+                    "pathName": "pages/calendarHome/calendarHome",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/create/create",
+                    "pathName": "pages/create/create",
+                    "query": "",
+                    "scene": null
+                }
+            ]
         }
     }
 }

@@ -1,36 +1,42 @@
 {
-  "setting": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
         },
-        {
-          "name": "pages/calendarWeek/calendarWeek",
-          "pathName": "pages/calendarWeek/calendarWeek",
-          "query": "",
-          "scene": null
+        "game": {
+            "list": []
         },
-        {
-          "name": "pages/calendarHome/calendarHome",
-          "pathName": "pages/calendarHome/calendarHome",
-          "query": "",
-          "scene": null
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/index/index",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/calendarWeek/calendarWeek",
+                    "pathName": "pages/calendarWeek/calendarWeek",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/calendarHome/calendarHome",
+                    "pathName": "pages/calendarHome/calendarHome",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/testlogin/testlogin",
+                    "pathName": "pages/testlogin/testlogin",
+                    "query": "",
+                    "scene": null
+                }
+            ]
         }
-      ]
     }
-  }
 }

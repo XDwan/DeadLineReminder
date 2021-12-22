@@ -1,42 +1,43 @@
 {
-  "pages": [
-    "pages/calendarHome/calendarHome",
-    "pages/calendarWeek/calendarWeek",
-    "pages/create/create",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/taskView/taskView",
-    "pages/reviseTask/reviseTask",
-    "Components/week/week"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#a9b7b7",
-    "selectedColor": "#11cd6e",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/calendarHome/calendarHome",
-        "text": "月"
-      },
-      {
-        "pagePath": "pages/calendarWeek/calendarWeek",
-        "text": "周"
-      },
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "我的"
-      }
-    ]
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "useExtendedLib": {
-    "weui": true
-  }
+    "pages": [
+        "pages/calendarHome/calendarHome",
+        "pages/calendarWeek/calendarWeek",
+        "pages/create/create",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/taskView/taskView",
+        "pages/reviseTask/reviseTask",
+        "Components/week/week",
+        "pages/testlogin/testlogin"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "#11cd6e",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/calendarHome/calendarHome",
+                "text": "月"
+            },
+            {
+                "pagePath": "pages/calendarWeek/calendarWeek",
+                "text": "周"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "text": "我的"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "useExtendedLib": {
+        "weui": true
+    }
 }
