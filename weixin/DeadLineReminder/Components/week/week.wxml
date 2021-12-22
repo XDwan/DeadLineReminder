@@ -1,22 +1,23 @@
 <!--component/calendarweek.wxml-->
-<view id="calendarweekheight" class="date-choose shrink border-bottom10">
-  <view class="weekday">
-    <block wx:for-item="weekday" wx:for="{{dateListArray}}" wx:key="index">
-      <text class="week">{{weekday}}</text>
-    </block>
-  </view>
-  <swiper class="date-choose-swiper" circular="true" indicator-dots="{{false}}" current="{{swiperCurrent}}"
-    bindchange="dateSwiperChange">
-    <block wx:for="{{dateList}}" wx:for-item="date" wx:key="id">
-      <swiper-item class="swiper-item"> 
-        <view class="dateday">
-          <block wx:for="{{date.days}}" wx:for-item="day" wx:key="id">
-            <view class="day" id="{{day.id}}" bindtap="chooseDate">
-              <text class="{{dateCurrentStr==day.id?'active':'nomal'}}{{today==day.id?' reds':''}}">{{day.day}}</text>
+<view id="calendarweekheight" class="date-choose">
+  <view class='calendar'>
+    <!--显示当前年月日-->
+    <view class='calendar-title'>
+        <view class='item ctrl' bindtap='lastMonth'>{{lastMonth}}</view>
+        <view class='item title'>{{title}}</view>
+        <view class='item ctrl' bindtap='nextMonth'>{{nextMonth}}</view>
+        <view class='item ctrl today' bindtap='today'>今天</view>
+    </view>
+
+    <!-- ============滚动展示============  -->
+    <view hidden="{{ toggleType == 'large' }}">
+        <scroll-view scroll-left="{{scrollLeft}}" scroll-x scroll-with-animation class="calendar-x">
+            <view class='grid' wx:for='{{thisMonthDays}}' wx:key="indx">
+                <view class='self' wx:if="{{ format === year+'-'+item.monthFormat+'-'+item.dateFormat }}"></view>
+                <view class="wrap {{ select === year+'-'+item.monthFormat+'-'+item.dateFormat ? 'select' :''}}" bindtap='select' data-date='{{item.date}}'>{{item.date}}</view>
             </view>
-          </block>
-        </view>
-      </swiper-item>
-    </block>
-  </swiper>
+        </scroll-view>
+    </view>
+
+</view>
 </view>

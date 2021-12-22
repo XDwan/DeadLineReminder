@@ -5,6 +5,8 @@
     "pages/create/create",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/taskView/taskView",
+    "pages/reviseTask/reviseTask",
     "Components/week/week"
   ],
   "window": {

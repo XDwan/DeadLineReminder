@@ -26,5 +26,8 @@
 </view>
 
 <button class="addButton" size="mini" bindtap="showBocklogMask" data-method="add">
-    <image  src="../../images/add.png"></image>
+    <image  src="../../images/add.png" style="width: 60rpx; height: 58rpx; display: block; position: absolute; box-sizing: border-box; left: 10rpx; top: 10rpx"></image>
 </button>
+
+<mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="- 请选择操作 -">
+</mp-actionSheet>

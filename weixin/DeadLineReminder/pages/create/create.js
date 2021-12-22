@@ -26,7 +26,7 @@ Page({
       startTime:utils.formatTimeH(new Date()),
       endTime:utils.formatEndTimeH(new Date()),
       isAllday:false,
-      taskKey:Date.parse(new Date()),
+      taskKey:new Date().getTime(),
       createData:{},
       list:new Array(),
       startDays:new Array(),
@@ -46,6 +46,11 @@ Page({
         endDay: options.today,
       })
   },
+  onShow:function(){
+    this.setData({
+      taskKey:new Date().getTime(),
+    })
+        }, 
 
   listAdd: function (list, create) {
 
@@ -140,7 +145,8 @@ Page({
   onChangeImportant: function (e) {
     var importantMapValue = e.detail.value;
     this.setData({
-      important: this.mapImportant(importantMapValue)
+      importantMapValue:importantMapValue,
+      important:this.mapImportant(importantMapValue)
     });
   },
   //日期选择的打开和关闭
@@ -159,22 +165,20 @@ Page({
 
   //日程开始时间
   onChangeStartTime: function (e) {
-    var hour = e.detail.value.slice(0, 2);
-    var min = e.detail.value.slice(3);
+    var hour = e.detail.value
     this.setData({
       startTime: e.detail.value+":00",
           endTime: e.detail.value > this.data.endTime ? e.detail.value : this.data.endTime,
-          StartTimeMin:parseFloat(hour)*60,
+          StartTimeMin:parseInt(hour)*60,
     })
   },
   //日程结束时间
   onChangeEndTime: function (e) {
-    var hour = e.detail.value.slice(0, 2);
-    var temp=parseFloat(hour)+1;
-    var min = e.detail.value.slice(3);
+    var hour = e.detail.value;
+    var temp=parseInt(hour)+1;
     this.setData({
       endTime: temp.toString()+":00",
-          EndTimeMin:parseFloat(hour)*60,
+          EndTimeMin:parseInt(hour)*60,
     })
   },
   //是否为全天
@@ -189,10 +193,21 @@ Page({
     } else if (e.detail.value === false) {
       this.setData({
         isAllday: e.detail.value,
-        startTime: utils.formatTimeHM(new Date()),
-        endTime: utils.formatEndTimeHM(new Date()),
+        startTime: utils.formatTimeH(new Date()),
+        endTime: utils.formatEndTimeH(new Date()),
       })
     }
+    if(this.data.isAllday){
+      this.setData({
+        StartTimeMin:parseFloat(this.data.endTime)*60,
+        EndTimeMin:parseInt(this.data.endTime)*60+60,
+      })
+    }else{
+      this.setData({
+      StartTimeMin:parseInt(this.data.startTime)*60,
+      EndTimeMin:parseInt(this.data.endTime)*60,
+    })
+  }
   },
   //选择多个日期
   select:function(e)
