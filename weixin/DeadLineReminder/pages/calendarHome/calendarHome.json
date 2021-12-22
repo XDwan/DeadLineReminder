@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "Calendar": "../../Components/calendar/calendar"
+    "Calendar": "../../Components/calendar/calendar",
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
   }
 }

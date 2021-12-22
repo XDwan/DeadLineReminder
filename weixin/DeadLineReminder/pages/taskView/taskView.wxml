@@ -2,8 +2,8 @@
     <!-- 表头 -->
 	<view class="header  border-t border-b ">
 		<view class="header-left header-btn" bindtap="cancelTask">取消</view>
-		<view class="header-center header-btn">新建任务</view>
-		<view class="header-right header-btn {{addBtnStatus}}" bindtap="saveTask" >添加</view>
+		<view class="header-center header-btn">查看任务</view>
+		<view class="header-right header-btn " bindtap="reviseTask" >修改</view>
 	</view>
     <!-- 主体 -->
     <view class="create_body">
@@ -11,21 +11,17 @@
 			<image src="/images/lights.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 122rpx" mode="heightFix"></image>
 			<view class="title block_line">
                 <text>标题:</text>
-				<input placeholder="最多15个字" type="text" bindinput="onChangeTitle" maxlength="15" value="{{title}}"/>
+				<view>{{title}}</view>
 			</view>
 			<image src="/images/text.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 225rpx" mode="heightFix"></image>
             <view class="title block_line">内容：</view>
             <view class="title block_line">
-				<textarea placeholder="最多40个字"
-                          bindinput="onChangeContent" 
-                          maxlength="40"
-						  style="height:60px;overflow:auto"
-                          value="{{content}}"/>
+				<view style="height:60px;overflow:auto">{{content}}</view>
 			</view>
             <view class="block_line border-t">
 				<image src="/images/warning.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 453rpx" mode="heightFix"></image>
 				<text>优先级:</text>
-				<picker mode="selector" range="{{taskImportant}}" bindchange="onChangeImportant">
+				<picker mode="selector" disabled="true" range="{{taskImportant}}" bindchange="onChangeImportant">
 					<view class="picker">{{important}}</view>
 				</picker>
 			</view>
@@ -35,15 +31,15 @@
 			<image src="/images/clock.png" style="height: 60rpx; width: 60rpx; display: block; position: absolute; box-sizing: border-box; left: 18rpx; top: 613rpx" mode="heightFix"></image>
 			<view class="end  block_line ">
 				<text>日期</text>
-				<view bindtap="setShow">共选择{{startDays.length}}天</view>	
+				<view bindtap="setShow">{{startDay}}</view>	
 			</view>
 			<view class="all-day  block_line border-b">
 				<text>全天</text>
-				<switch bindchange="onChangeAllDay"></switch>
+				<switch bindchange="onChangeAllDay" disabled="true" ></switch>
 			</view>
 			<view class="start  block_line border-b">
 				<text>开始</text>
-				<picker mode="selector" value="{{startTime}}" range="{{startList}}"  bindchange="onChangeStartTime">
+				<picker mode="selector" value="{{startTime}}" disabled="true" range="{{startList}}"  bindchange="onChangeStartTime">
 				    <view class="picker">
 				      {{startTime}}
 				    </view>
@@ -51,7 +47,7 @@
 			</view>
 			<view class="end  block_line ">
 				<text>结束</text>
-				<picker mode="selector" value="{{startTime}}" range="{{endList}}"  bindchange="onChangeEndTime">
+				<picker mode="selector" value="{{startTime}}" disabled="true" range="{{endList}}"  bindchange="onChangeEndTime">
 				    <view class="picker">
 				      {{endTime}}
 				    </view>
