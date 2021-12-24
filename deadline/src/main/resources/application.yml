@@ -1,6 +1,10 @@
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://wj-security.top:3306/wx
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?serverTimezone=GMT%2B8&useSSL=true
+    username: ADMIN
+    password: 123456
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
