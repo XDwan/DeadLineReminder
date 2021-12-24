@@ -4,5 +4,5 @@ import com.example.deadline.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends UserService {
 }
