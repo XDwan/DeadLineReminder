@@ -18,3 +18,19 @@
 Java目录结构：
 
 --deadline
+
+后端部分：
+
+User：
+name
+id
+
+event：
+title
+content
+priority
+date
+starttime
+endtime
+
+

@@ -8,29 +8,48 @@ Page({
 
     },
 
-    login:function(e) {
+    get:function(e) {
         console.log('开始登录')
-        wx.login({
-            success(res){
-                if(res.code){
-                    wx.request({
-                      url: '127.0.0.1:8080/wx/login',
-                      data:{
-                          code:res.code
-                      },
-                      method:'POST',
-                      dataType:'json',
-                      success:function (res) {
-                          console.log(res)
-                      }
-                    })
-                }
-            },
-            fail:function () {
-                console.log('登录失败',res.data)
-            }
+        wx.request({
+          url: 'http://192.168.1.109:8081/hello',
+          method:'GET',
+          success(res){
+              console.log(res.data);
+          },
+          fail(res){
+              console.log(res)
+          }
         })
+
         console.log('结束登录')
+    },
+    post:function(e) {
+        wx.login({
+          timeout: 1000,
+          success:function (res) {
+              if(res.code){
+                  console.log(res.code);
+              }
+              
+          },
+          fail:function (res) {
+              console.log(res);
+          }
+        })
+        wx.request({
+            url: 'http://192.168.1.109:8081/wx/login',
+            method:'POST',
+            data:{
+                name:'XDWAN',
+                age:'22'
+            },
+            success(res){
+                console.log(res.data);
+            },
+            fail(res){
+                console.log(res)
+            }
+          })
     },
     /**
      * 生命周期函数--监听页面加载

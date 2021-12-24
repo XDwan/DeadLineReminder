@@ -90,7 +90,17 @@ Page({
       createData: createData
     })
     console.log(createData);
-
+    wx.request({
+      url: 'http://192.168.1.109:8081/wx/createTask',
+      method:'POST',
+      data:createData,
+      success(res){
+        console.log(res.data);
+      },
+      fail(res){
+         console.log(res)
+      }
+    })
     for(var i=0;i<this.data.startDays.length;i++)
         {
           var startDay=createData.startDays[i];
