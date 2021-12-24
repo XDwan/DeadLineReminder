@@ -16,7 +16,7 @@ public class CRUD {
     @RequestMapping("/ListUser")
     @ResponseBody
     public List<Event> ListUser(){
-        return userservice.ListUser();
+        return userservice.ListEvent();
     }
     //对数据库进行查找操作
     @RequestMapping("/ListUserByname")
@@ -52,6 +52,6 @@ public class CRUD {
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public Event insert(Event user)
     {
-        return userservice.insertUser(user);
+        return userservice.insertEvent(user);
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.example.server.mapper.EventSolverMapper" xmlns="http://mybatis.org/schema/mybatis-mapper">
+    <select id="queryByUserId" parameterType="" resultType="com.example.server.pojo.EventSolver">
+        select * from event
+        where event.userid =
+    </select>
+</mapper>
