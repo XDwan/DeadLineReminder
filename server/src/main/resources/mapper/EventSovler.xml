@@ -21,8 +21,8 @@
             select LAST_INSERT_ID()
         </selectKey>
         insert into event
-        (taskKey,title,startTime,endTime,startDays,startTimeMin,endTimeMin,importantMapValue,isAllday,content)
-        values(#{taskKey},#{title},#{startTime},#{endTime},#{startDays},#{startTimeMin},#{endTimeMin},#{importantMapValue},#{isAllday},#{content})
+        (taskKey,title,startTime,endTime,startDays,startTimeMin,endTimeMin,importantMapValue,isAllday,content,userid)
+        values(#{taskKey},#{title},#{startTime},#{endTime},#{startDays},#{startTimeMin},#{endTimeMin},#{importantMapValue},#{isAllday},#{content},#{userid})
     </insert>
     <delete id="deleteEvent" parameterType="String">
         delete from event where id = #{taskKey};
