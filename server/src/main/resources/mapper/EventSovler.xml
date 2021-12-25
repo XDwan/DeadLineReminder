@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.mapper.EventMapper">
+<!--    <select id="queryByUserId" parameterType="int" resultType="com.example.server.entity.Event">-->
+<!--        select * from event-->
+<!--        where event.userid = id-->
+<!--    </select>-->
+    <select id="queryByUserId" parameterType="String" resultType="com.example.server.entity.Event">
+        select * from event
+        where event.taskKey = id
+    </select>
+    <insert id="addEvent" parameterType="com.example.server.entity.Event">
+        <!-- selectKey配置主键信息的标签
+			keyColumn:对应数据库表中的主键列
+			keyProperty:对应实体类中的属性
+			after:代表执行下面代码之前，先执行当前里面的代码
+		 -->
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="String">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into event
+        (taskKey,title,startTime,endTime,startDays,startTimeMin,endTimeMin,importantMapValue,isAllday,content)
+        values(#{taskKey},#{title},#{startTime},#{endTime},#{startDays},#{startTimeMin},#{endTimeMin},#{importantMapValue},#{isAllday},#{content})
+    </insert>
+    <delete id="deleteEvent" parameterType="String">
+        delete from event where id = #{taskKey};
+    </delete>
+
+</mapper>
