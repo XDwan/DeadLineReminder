@@ -17,10 +17,11 @@ Page({
       startTime:utils.formatTimeH(new Date()),
       endTime:utils.formatEndTimeH(new Date()),
       isAllday:false,
-      taskKey:Date.parse(new Date()),
+      taskKey:"",
       createData:{},
       list:new Array(),
       startDays:new Array(),
+      startDay:"",
       StartTimeMin:utils.formatTimeMIN(new Date()),
       EndTimeMin:utils.formatEndTimeMin(new Date()),
       show:false,
@@ -33,7 +34,7 @@ Page({
       console.log(options.today),
       this.setData({
         startDay:options.today,
-        endDay:options.today,
+        taskKey:options.key
       })
     },
 
@@ -53,7 +54,7 @@ Page({
 
 
     readList:function(e,today){
-        var key=parseInt(e);
+        var key=e;
         let list = wx.getStorageSync(today) || [];
         for(var i=0;i<list.length;i++)
         {
@@ -64,7 +65,7 @@ Page({
                     startDay:today,
                     title: list[i].title,
                     content: list[i].content,
-                    startDays:list[i].startDays,
+                    startDay:list[i].startDay,
                     startTime: list[i].startTime,
                     StartTimeMin:list[i].StartTimeMin,
                     endTime: list[i].endTime,

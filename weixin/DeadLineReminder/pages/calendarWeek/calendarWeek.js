@@ -11,7 +11,7 @@ Page({
             { text: '查看', value: 1 },
             { text: '删除', value: 2 },
         ],
-        key:0,
+        key:"",
         // 页面总高度将会放在这里
         windowHeight: 0,
         calendarWeekHeight: 0,
@@ -139,19 +139,8 @@ Page({
       //添加按钮，未完成
       deleteTask:function(){  
         let list = wx.getStorageSync(this.data.today) || [];
-        let startDays=[];
-        for(var i=0;i<list.length;i++)
-          {
-            if(list[i].taskKey===this.data.key){
-              startDays=list[i].startDays;
-              break;
-            }
-          }        
-          for(var i=0;i<startDays.length;i++)
-          {
-            var startDay=startDays[i];
+            var startDay=this.data.today;
             console.log(startDay);
-            let list = wx.getStorageSync(startDay) || [];
             this.listDelete(list,this.data.key);
             wx.setStorage({
             key:startDay,
@@ -164,7 +153,6 @@ Page({
               console.log('写入value1发生错误')      
             } 
           })
-          };
   
       },
       showBocklogMask:function(e){
