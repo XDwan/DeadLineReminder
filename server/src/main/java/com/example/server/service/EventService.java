@@ -4,7 +4,7 @@ import com.example.server.entity.Event;
 
 import java.util.List;
 
-public interface EventSolverService {
+public interface EventService {
     // 查询用户的事件
     public List<Event>  queryByUserId(long userId);
     // 创建新的任务

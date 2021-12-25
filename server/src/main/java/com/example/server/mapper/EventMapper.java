@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface EventSolverMapper {
+public interface EventMapper {
     // 通过UserId查询
     public List<Event> queryByUserId();
     // 添加新事件

@@ -1,11 +1,10 @@
 package com.example.server.service.impl;
-
 import com.example.server.entity.Event;
-import com.example.server.service.EventSolverService;
+import com.example.server.service.EventService;
 
 import java.util.List;
 
-public class EventSolverServiceImpl implements EventSolverService {
+public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> queryByUserId(long userId) {
