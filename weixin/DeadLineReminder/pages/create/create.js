@@ -26,9 +26,11 @@ Page({
       taskImportant : ['一般','重要'],
       important : '一般',
       startTime:utils.formatTimeH(new Date()),
+      startDay:utils.formatDate(new Date()),
+      createTime:utils.formatCreateTime(new Date()),
       endTime:utils.formatEndTimeH(new Date()),
       isAllday:false,
-      taskKey:new Date().getTime(),
+      taskKey:"",
       createData:{},
       list:new Array(),
       startDays:new Array(),
@@ -50,7 +52,7 @@ Page({
   },
   onShow:function(){
     this.setData({
-      taskKey:new Date().getTime(),
+      taskKey:this.data.startDay+utils.formatCreateTime(new Date())
     })
         }, 
 
@@ -78,8 +80,8 @@ Page({
       title: this.data.title,
       content: this.data.content || "",
       importantMapValue: this.data.importantMapValue,
-      startDays:this.data.startDays,
       startTime: this.data.startTime,
+      startDay:this.data.startDay,
       StartTimeMin: this.data.StartTimeMin,
       endTime: this.data.endTime,
       EndTimeMin: this.data.EndTimeMin,
@@ -101,9 +103,14 @@ Page({
          console.log(res)
       }
     })
+    var time=this.data.createTime;
     for(var i=0;i<this.data.startDays.length;i++)
         {
-          var startDay=createData.startDays[i];
+          var startDay=this.data.startDays[i];
+          this.setData({
+            ['createData.startDay']:startDay,
+            ['createData.taskKey']:startDay+time,
+          })
           console.log(startDay);
           let list = wx.getStorageSync(startDay) || [];
       list.push(createData);

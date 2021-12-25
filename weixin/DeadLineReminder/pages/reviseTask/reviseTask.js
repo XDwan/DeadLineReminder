@@ -20,9 +20,10 @@ Page({
       taskImportant : ['一般','重要'],
       important : '一般',
       startTime:utils.formatTimeH(new Date()),
+      startDay:utils.formatDate(new Date()),
       endTime:utils.formatEndTimeH(new Date()),
       isAllday:false,
-      taskKey:0,
+      taskKey:"",
       createData:{},
       list:new Array(),
       startDays:new Array(),
@@ -38,12 +39,16 @@ Page({
         var key=options.key;
         console.log(key);
         this.readList(key,options.today);
+        this.setData({
+          taskKey:options.key,
+          startDay:options.today
+        })
     },
     onShow:function(){
       
           },
           readList:function(e,today){
-            var key=parseInt(e);
+            var key=e;
             let list = wx.getStorageSync(today) || [];
             for(var i=0;i<list.length;i++)
             {
@@ -54,7 +59,7 @@ Page({
                         startDay:today,
                         title: list[i].title,
                         content: list[i].content,
-                        startDays:list[i].startDays,
+                        startDay:list[i].startDay,
                         startTime: list[i].startTime,
                         StartTimeMin:list[i].StartTimeMin,
                         endTime: list[i].endTime,
@@ -96,7 +101,7 @@ Page({
         title: this.data.title,
         content: this.data.content||"",
         importantMapValue:this.data.importantMapValue,
-        startDays:this.data.startDays,
+        startDay:this.data.startDay,
         startTime: this.data.startTime,
         StartTimeMin:this.data.StartTimeMin,
         endTime: this.data.endTime,
@@ -111,11 +116,16 @@ Page({
       //let arr = wx.getStorageSync("test1") || [];
       
       console.log(this.data.startDays);
+      var key=this.data.taskKey;
         for(var i=0;i<this.data.startDays.length;i++)
         {
-          var startDay=createData.startDays[i];
+          var startDay=this.data.startDays[i];
           console.log(startDay);
           let list = wx.getStorageSync(startDay) || [];
+          this.setData({
+            ['createData.startDay']:startDay,
+            ['createData.taskKey']:key
+          })
           this.listAdd(list,createData);
           if(list.length===0)
             list.push(createData);
