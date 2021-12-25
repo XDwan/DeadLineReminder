@@ -14,11 +14,11 @@
     <name>deadline</name>
     <description>deadline</description>
     <properties>
-<<<<<<< HEAD
+
         <java.version>17</java.version>
-=======
+
         <java.version>1.8</java.version>
->>>>>>> 8e974e69fc9a91225afb60f6209d1b53a04eb3c9
+
     </properties>
     <dependencies>
         <dependency>

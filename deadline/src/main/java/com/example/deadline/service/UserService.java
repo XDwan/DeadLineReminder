@@ -12,14 +12,14 @@ public class UserService {
     public List<Event> findByName(String name) {
         return userMapper.findUserByName(name);
     }
-    public Event insertUser(Event user) { userMapper.insertUser(user);return user;}
-    public List<Event> ListUser(){
+    public Event insertEvent(Event event) { userMapper.insertUser(event);return event;}
+    public List<Event> ListEvent(){
         return  userMapper.ListUser();
     }
-    public int Update(Event user){
-        return userMapper.Update(user);
+    public int Update(Event event){
+        return userMapper.Update(event);
     }
-    public int delete(int id){
-        return userMapper.delete(id);
+    public int delete(int EventId){
+        return userMapper.delete(EventId);
     }
 }

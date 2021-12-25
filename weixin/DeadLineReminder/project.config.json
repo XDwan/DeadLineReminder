@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "description": "项目配置文件",
     "packOptions": {
         "ignore": [
@@ -42,7 +41,8 @@
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true,
-        "showES6CompileOption": false
+        "showES6CompileOption": false,
+        "minifyWXML": true
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.2",
@@ -87,100 +87,12 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/create/create",
-                    "pathName": "pages/create/create",
+                    "name": "pages/testlogin/testlogin",
+                    "pathName": "pages/testlogin/testlogin",
                     "query": "",
                     "scene": null
                 }
             ]
         }
     }
-=======
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": [
-			{
-				"type": "file",
-				"value": ".eslintrc.js"
-			}
-		]
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"lazyloadPlaceholderEnable": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": false,
-		"useApiHostProcess": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"enableEngineNative": false,
-		"useIsolateContext": true,
-		"userConfirmedBundleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"minifyWXSS": true,
-		"showES6CompileOption": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.19.2",
-	"appid": "wx8af258cf8ae80fbd",
-	"projectname": "miniprogram-3",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"staticServerOptions": {
-		"baseURL": "",
-		"servePath": ""
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"list": []
-		},
-		"conversation": {
-			"list": []
-		},
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/calendarHome/calendarHome",
-					"pathName": "pages/calendarHome/calendarHome",
-					"scene": null
-				}
-			]
-		}
-	}
->>>>>>> 8e974e69fc9a91225afb60f6209d1b53a04eb3c9
 }
