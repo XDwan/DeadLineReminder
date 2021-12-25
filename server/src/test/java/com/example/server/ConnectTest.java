@@ -27,7 +27,7 @@ public class ConnectTest {
     EventMapper eventMapper;
     @Test
     public void toTest(){
-        List<Event> events = eventMapper.queryByUserId();
+        List<Event> events = eventMapper.queryByUserId("");
         for (Event event:events){
             System.out.println(event);
         }

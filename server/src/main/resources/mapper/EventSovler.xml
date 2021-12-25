@@ -9,7 +9,7 @@
 <!--    </select>-->
     <select id="queryByUserId" parameterType="String" resultType="com.example.server.entity.Event">
         select * from event
-        where event.taskKey = id
+        where event.userID = userID
     </select>
     <insert id="addEvent" parameterType="com.example.server.entity.Event">
         <!-- selectKey配置主键信息的标签

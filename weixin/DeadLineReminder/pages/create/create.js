@@ -115,7 +115,6 @@ Page({
                 title: this.data.title,
                 content: this.data.content || "",
                 importantMapValue: this.data.importantMapValue,
-                startDays: this.data.startDays[i],
                 startTime: this.data.startTime,
                 startDay: this.data.startDay,
                 StartTimeMin: this.data.StartTimeMin,

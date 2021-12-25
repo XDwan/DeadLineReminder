@@ -21,6 +21,23 @@ public class Event {
     String taskKey;
     String userID;
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", importantMapValue=" + importantMapValue +
+                ", startDay='" + startDay + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", StartTimeMin=" + StartTimeMin +
+                ", EndTimeMin=" + EndTimeMin +
+                ", isAllDay=" + isAllDay +
+                ", taskKey='" + taskKey + '\'' +
+                ", userID='" + userID + '\'' +
+                '}';
+    }
+
     public String getTitle() {
         return title;
     }

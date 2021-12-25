@@ -2,6 +2,7 @@ package com.example.server.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.server.entity.Event;
+import com.example.server.service.impl.EventServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EventController {
+    private EventServiceImpl eventService = new EventServiceImpl();
     @PostMapping("/wx/login")
     @ResponseBody
     public String wxLogin(@RequestBody JSONObject data){
@@ -22,7 +24,11 @@ public class EventController {
         System.out.println(createData);
         String userID = createData.getString("userID");
         System.out.println(createData.getString("taskKey"));
+        System.out.println(createData.getString("userID"));
         System.out.println(userID);
+        Event event = eventService.JSON2Event(createData);
+        System.out.println(event);
+        eventService.insertEvent(event);
         return new String("提交测试");
     }
     @PostMapping("/wx/selectDay")
