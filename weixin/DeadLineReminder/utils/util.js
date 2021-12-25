@@ -81,6 +81,12 @@ function FirstDayInThisWeek(d) {
   var d = new Date(d);  
   return DateAddDay(d, 0 - d.getDay());
 }
+function formatCreateTime(date) {
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()  
+  return [hour, minute, second].map(formatNumber).join(':')
+}
 
 
 
@@ -96,5 +102,6 @@ module.exports = {
   formatTimeMIN:formatTimeMIN,
   formatEndTimeMin:formatEndTimeMin,
   addZero: formatNumber,
-  formatTime2
+  formatTime2,
+  formatCreateTime
 }
