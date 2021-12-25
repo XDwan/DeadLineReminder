@@ -39,14 +39,42 @@ Page({
       text: '',
       isShow:false,
       buttons: [{text: '取消'}, {text: '确定'}],
+      userID:""
       },
-
+      getUserId:function (e) {
+        var appId = 'wx8af258cf8ae80fbd';
+        var appSecret = 'd5b3f3e802c62131880f5a168478bd4c';
+        let that = this;
+        wx.login({
+          success(res){
+            console.log('code====',res.code);
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session',
+              data:{
+                appid: appId,
+                secret: appSecret,
+                js_code: res.code,
+                grant_type:'authorization_code'
+              },
+              method:"GET",
+              success(res){
+                that.setData({
+                  userID:res.data.openid
+                })
+                console.log('openid=====',res.data.openid);   // 得到openid
+                console.log('session_key====', res.data.session_key);   // 得到 session_key
+              }
+            })
+          }
+        })
+      },
   onLoad: function (options) {
     console.log(options.today),
       this.setData({
         startDay: options.today,
         endDay: options.today,
-      })
+      });
+      this.getUserId();
   },
   onShow:function(){
     this.setData({
@@ -74,22 +102,26 @@ Page({
 
   //添加按钮，未完成
   saveTask: function (e) {
-    let createData = {
+  
+    while(this.data.userID == ''){
+      console.log('wait');
+    }
+    let that = this;
+    for(var i=0;i<this.data.startDays.length;i++){
+      var startDay=this.data.startDays[i];
+      let createData = {
       title: this.data.title,
       content: this.data.content || "",
       importantMapValue: this.data.importantMapValue,
-      startDays:this.data.startDays,
+      startDays:this.data.startDays[i],
       startTime: this.data.startTime,
       StartTimeMin: this.data.StartTimeMin,
       endTime: this.data.endTime,
       EndTimeMin: this.data.EndTimeMin,
       isAllday: this.data.isAllday,
-      taskKey: this.data.taskKey
+      taskKey: this.data.taskKey,
+      userID:this.data.userID
     }
-    this.setData({
-      createData: createData
-    })
-    console.log(createData);
     wx.request({
       url: 'http://192.168.1.109:8081/wx/createTask',
       method:'POST',
@@ -101,13 +133,9 @@ Page({
          console.log(res)
       }
     })
-    for(var i=0;i<this.data.startDays.length;i++)
-        {
-          var startDay=createData.startDays[i];
-          console.log(startDay);
-          let list = wx.getStorageSync(startDay) || [];
-      list.push(createData);
-          wx.setStorage({
+    let list = wx.getStorageSync(startDay) || [];
+    list.push(createData);
+    wx.setStorage({
           key:startDay,
           data:list,
           success: function() {
@@ -118,8 +146,7 @@ Page({
             console.log('写入value1发生错误')      
           } 
         })
-        };
-
+    }
       wx.navigateBack({
         delta: 1
       });

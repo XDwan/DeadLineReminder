@@ -22,9 +22,38 @@ Page({
         ],
         key:0,
         createData:{},
+        userID:""
     },
+    getUserId:function (e) {
+        var appId = 'wx8af258cf8ae80fbd';
+        var appSecret = 'd5b3f3e802c62131880f5a168478bd4c';
+        let that = this;
+        wx.login({
+          success(res){
+            console.log('code====',res.code);
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session',
+              data:{
+                appid: appId,
+                secret: appSecret,
+                js_code: res.code,
+                grant_type:'authorization_code'
+              },
+              method:"GET",
+              success(res){
+                that.setData({
+                  userID:res.data.openid
+                })
+                console.log('openid=====',res.data.openid);   // 得到openid
+                console.log('session_key====', res.data.session_key);   // 得到 session_key
+              }
+            })
+          }
+        })
+      },
     onLoad: function(options) {
         this.Calendar = this.selectComponent("#Calendar"); //这里是实例化
+        this.getUserId();
       },
       
       showBocklogMask:function(e){
@@ -33,7 +62,7 @@ Page({
         url: '../create/create?today='+this.data.today
       })
       },
-
+      
       getList:function(e){
         let list = wx.getStorageSync(this.data.today) || [];
         //console.log(list);
@@ -50,12 +79,29 @@ Page({
          
         var today=e.detail.value;
         //console.log(today);
+        let that = this;
+        wx.request({
+          url: 'http://192.168.1.109:8081/wx/selectDay',
+          data:{
+            userID:that.data.userID,
+            day:today
+          },
+          success(res){
+            that.setData({
+              list:res.list
+            })
+          },
+          fail(res){
+            console.log(res);
+          }
+        })
         this.setData({
             selectVal:e.detail,
             today:e.detail
         }),
         this.onShow();
-        this.getList(e.detail);console.log(this.data.list);
+        this.getList(e.detail);
+        console.log(this.data.list);
     },
 
     selectTask:function(e){
