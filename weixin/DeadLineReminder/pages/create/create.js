@@ -80,7 +80,7 @@ Page({
     },
     onShow: function() {
         this.setData({
-            taskKey: this.data.startDay + utils.formatCreateTime(new Date())
+            // taskKey: this.data.startDay + utils.formatCreateTime(new Date())
         })
     },
 
@@ -116,12 +116,12 @@ Page({
                 content: this.data.content || "",
                 importantMapValue: this.data.importantMapValue,
                 startTime: this.data.startTime,
-                startDay: this.data.startDay,
+                startDay: this.data.startDays[i],
                 StartTimeMin: this.data.StartTimeMin,
                 endTime: this.data.endTime,
                 EndTimeMin: this.data.EndTimeMin,
                 isAllday: this.data.isAllday,
-                taskKey: this.data.taskKey,
+                taskKey: this.data.taskKey+"_"+i,
                 userID: this.data.userID
             }
             wx.request({

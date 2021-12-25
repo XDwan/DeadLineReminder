@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.server.mapper.EventMapper">
+<mapper namespace="com.example.server.mapper.EventMapper" >
 <!--    <select id="queryByUserId" parameterType="int" resultType="com.example.server.entity.Event">-->
 <!--        select * from event-->
 <!--        where event.userid = id-->
@@ -17,15 +17,15 @@
 			keyProperty:对应实体类中的属性
 			after:代表执行下面代码之前，先执行当前里面的代码
 		 -->
-        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="String">
+        <selectKey keyColumn="userID" keyProperty="userID" order="AFTER" resultType="String">
             select LAST_INSERT_ID()
         </selectKey>
         insert into event
         (taskKey,title,startTime,endTime,startDays,startTimeMin,endTimeMin,importantMapValue,isAllday,content,userid)
-        values(#{taskKey},#{title},#{startTime},#{endTime},#{startDays},#{startTimeMin},#{endTimeMin},#{importantMapValue},#{isAllday},#{content},#{userid})
+        values(#{taskKey},#{title},#{startTime},#{endTime},#{startDays},#{StartTimeMin},#{EndTimeMin},#{importantMapValue},#{isAllDay},#{content},#{userID})
     </insert>
     <delete id="deleteEvent" parameterType="String">
-        delete from event where id = #{taskKey};
+        delete from event where taskKey = #{taskKey};
     </delete>
 
 </mapper>

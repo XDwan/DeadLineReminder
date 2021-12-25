@@ -5,12 +5,15 @@ import com.example.server.entity.Event;
 import com.example.server.mapper.EventMapper;
 import com.example.server.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service()
 public class EventServiceImpl implements EventService {
+
     @Autowired
-    EventMapper mapper;
+    private EventMapper mapper;
 
     @Override
     public List<Event> queryByUserId(String userId) {
@@ -18,8 +21,9 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public String insertEvent(Event event) {
-        return mapper.addEvent(event);
+    public void insertEvent(Event event) {
+        System.out.println(event);
+        mapper.addEvent(event);
     }
 
     @Override
@@ -31,7 +35,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public String deleteEvent(String eventId) {
+    public int deleteEvent(String eventId) {
         return mapper.deleteEvent(eventId);
     }
 
@@ -42,7 +46,7 @@ public class EventServiceImpl implements EventService {
         newEvent.setTaskKey(createDate.getString("taskKey"));
         newEvent.setUserID(createDate.getString("userID"));
         newEvent.setImportantMapValue(createDate.getIntValue("importantMapValue"));
-        newEvent.setStartDay(createDate.getString("startDay"));
+        newEvent.setStartDays(createDate.getString("startDay"));
         newEvent.setStartTime(createDate.getString("startTime"));
         newEvent.setEndTime(createDate.getString("endTime"));
         newEvent.setEndTimeMin(createDate.getIntValue("EndTimeMin"));

@@ -12,7 +12,7 @@ public class Event {
     String title;
     String content;
     int importantMapValue;
-    String startDay;
+    String startDays;
     String startTime;
     String endTime;
     int StartTimeMin;
@@ -27,7 +27,7 @@ public class Event {
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", importantMapValue=" + importantMapValue +
-                ", startDay='" + startDay + '\'' +
+                ", startDays='" + startDays + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", StartTimeMin=" + StartTimeMin +
@@ -62,12 +62,12 @@ public class Event {
         this.importantMapValue = importantMapValue;
     }
 
-    public String getStartDay() {
-        return startDay;
+    public String getStartDays() {
+        return startDays;
     }
 
-    public void setStartDay(String startDay) {
-        this.startDay = startDay;
+    public void setStartDays(String startDay) {
+        this.startDays = startDay;
     }
 
     public String getStartTime() {

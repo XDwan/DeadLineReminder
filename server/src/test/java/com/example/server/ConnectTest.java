@@ -24,12 +24,26 @@ public class ConnectTest {
         connection.close();
     }
     @Autowired
-    EventMapper eventMapper;
+    EventMapper mapper;
     @Test
     public void toTest(){
-        List<Event> events = eventMapper.queryByUserId("");
-        for (Event event:events){
-            System.out.println(event);
-        }
+        Event event = new Event();
+        event.setTaskKey("123456");
+        event.setUserID("1903015");
+        event.setTitle("hello");
+        event.setAllDay(false);
+        event.setContent("hellp");
+        event.setStartTime("123");
+        event.setEndTimeMin(120);
+        event.setEndTime("1930");
+        event.setStartDays("12.9");
+
+        mapper.addEvent(event);
+    }
+    @Test
+    public void toTestSearch(){
+        String userID = "oHWQY5Zipyq7fnC-ylNuFn88YRz0";
+        List<Event> events = mapper.queryByUserId(userID);
+        System.out.println(events);
     }
 }

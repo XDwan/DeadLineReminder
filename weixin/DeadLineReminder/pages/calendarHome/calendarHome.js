@@ -76,31 +76,38 @@ Page({
       },
       
     select:function(e) {
-         
-        var today=e.detail.value;
-        //console.log(today);
+      console.log(e)
+      this.setData({
+        selectVal:e.detail,
+        today:e.detail
+      })
+        console.log(this.data.today);
         let that = this;
+        // this.getUserId();
+        // while(that.data.userID == ""){
+        //   console.log(that.data.userID);
+        // }
+        var postData = {
+            userID:that.data.userID,
+            day:that.data.today,
+        }
+        // console.log(postData)
         wx.request({
           url: 'http://192.168.1.109:8081/wx/selectDay',
-          data:{
-            userID:that.data.userID,
-            day:today
-          },
+          method:"POST",
+          data:postData,
           success(res){
+            console.log(res);
             that.setData({
-              list:res.list
+              list:res.data
             })
           },
           fail(res){
             console.log(res);
           }
         })
-        this.setData({
-            selectVal:e.detail,
-            today:e.detail
-        }),
         this.onShow();
-        this.getList(e.detail);
+        // this.getList(e.detail);
         console.log(this.data.list);
     },
 
@@ -156,7 +163,23 @@ Page({
           }
           return list;
         },
-        deleteTask:function(){  
+        deleteTask:function(e){  
+          console.log('delete')
+          console.log(this.data.key);
+          wx.request({
+            url: 'http://192.168.1.109:8081/wx/deleteTask',
+            method:'POST',
+            data:{
+              taskKey:this.data.key,
+              userID:this.data.userID
+            },
+            success(res){
+              console.log(res)
+            },
+            fail(res){
+              console.log(res)
+            }
+          })
           let list = wx.getStorageSync(this.data.today) || [];
             this.createDeleteTask(this.data.key);       
               var startDay=this.data.today;
